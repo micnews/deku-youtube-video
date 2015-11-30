@@ -13,7 +13,7 @@ import YoutubeVideo from 'youtube-video';
 
 export default {
   render: function () {
-    return (<YoutubeVideo id='YoB8t0B4jx4' />);
+    return (<YoutubeVideo youtube-id='YoB8t0B4jx4' />);
   }
 }
 ```
