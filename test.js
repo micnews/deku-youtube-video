@@ -1,45 +1,42 @@
 'use strict';
 import test from 'tape';
 import YoutubeVideo from './';
-import assertElement from 'assert-element';
-import { findWithClass } from 'deku-component-find-class';
+import { renderString, tree } from 'deku';
+import tsml from 'tsml';
 
 test('YoutubeVideo initial state', function (t) {
-  var r = YoutubeVideo.render({
+  var html = renderString(tree(YoutubeVideo.render({
     props: {
       'youtube-id': 'YoB8t0B4jx4'
     },
     state: {
       videoOpened: false
     }
-  });
+  })));
 
-  assertElement.isNode(r);
-  assertElement.hasChild(r, 0, function (child) {
-    assertElement.isNode(child, 'a');
-  });
-
-  var img = findWithClass(r, 'youtube-video__image');
-  t.equal(img.attributes.style, 'background-image: url(http://img.youtube.com/vi/YoB8t0B4jx4/hqdefault.jpg);');
+  t.equal(html, tsml`
+    <div class="youtube-video">
+      <a href="#">
+        <div class="youtube-video__image" style="background-image: url(http://img.youtube.com/vi/YoB8t0B4jx4/hqdefault.jpg);"></div>
+        <div class="youtube-video__play-btn"></div>
+      </a>
+    </div>`);
   t.end();
 });
 
 test('YoutubeVideo video opened state', function (t) {
-  var r = YoutubeVideo.render({
+  var html = renderString(tree(YoutubeVideo.render({
     props: {
       'youtube-id': 'YoB8t0B4jx4'
     },
     state: {
       videoOpened: true
     }
-  });
+  })));
 
-  assertElement.isNode(r);
-  assertElement.hasChild(r, 0, function (child) {
-    assertElement.isNode(child, 'iframe');
-  });
-
-  var img = findWithClass(r, 'youtube-video__frame');
-  t.equal(img.attributes.src, 'http://www.youtube.com/embed/YoB8t0B4jx4?autoplay=1');
+  t.equal(html, tsml`
+    <div class="youtube-video">
+      <iframe class="youtube-video__frame" src="http://www.youtube.com/embed/YoB8t0B4jx4?autoplay=1" frameBorder="0"></iframe>
+    </div>`);
   t.end();
 });
