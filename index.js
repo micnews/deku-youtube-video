@@ -4,7 +4,6 @@
 import element from 'magic-virtual-element';
 
 function videoClick (e, component, setState) {
-  e.preventDefault();
   setState({
     videoOpened: true
   });
@@ -28,11 +27,11 @@ export default {
     const content = (state.videoOpened && !props.disabled)
       ? <iframe class='youtube-video__frame' src={`http://www.youtube.com/embed/${props['youtube-id']}?autoplay=1`}
           frameBorder='0' />
-      : <a href='#' onClick={videoClick}>
+      : <div>
           <div class='youtube-video__image' style={`background-image: url(${imageSrc});`}></div>
           <div class='youtube-video__play-btn'></div>
-        </a>;
+        </div>;
 
-    return <div class='youtube-video'>{content}</div>;
+    return <div class='youtube-video' onClick={videoClick}>{content}</div>;
   }
 };

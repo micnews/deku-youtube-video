@@ -5,6 +5,7 @@
   overflow: hidden;
   background-color: black;
   height: 0;
+  cursor: pointer;
 }
 
 .youtube-video__image {
