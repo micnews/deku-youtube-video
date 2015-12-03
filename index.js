@@ -18,7 +18,7 @@ export default {
   render: function ({ props, state }, setState) {
     const imageSrc = `http://img.youtube.com/vi/${props['youtube-id']}/${props.thumbnail || 'hqdefault'}.jpg`;
 
-    if (props.disabled) {
+    if (setState && props.disabled) {
       setState({
         videoOpened: false
       });
