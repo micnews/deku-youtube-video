@@ -16,10 +16,16 @@ export default {
       videoOpened: false
     };
   },
-  render: function ({ props, state }) {
+  render: function ({ props, state }, setState) {
     const imageSrc = `http://img.youtube.com/vi/${props['youtube-id']}/${props.thumbnail || 'hqdefault'}.jpg`;
 
-    var content = state.videoOpened
+    if (props.disabled) {
+      setState({
+        videoOpened: false
+      });
+    }
+
+    const content = (state.videoOpened && !props.disabled)
       ? <iframe class='youtube-video__frame' src={`http://www.youtube.com/embed/${props['youtube-id']}?autoplay=1`}
           frameBorder='0' />
       : <a href='#' onClick={videoClick}>
