@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="170" height="170" viewBox="0 0 170 170">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #000;
+        stroke: #fff;
+        stroke-width: 2px;
+        filter: url(#outer-glow-1);
+        fill-opacity: 0.3;
+      }
+
+      .cls-2 {
+        fill: #fff;
+        opacity: 0.9;
+        fill-rule: evenodd;
+      }
+    </style>
+
+    <filter id="outer-glow-1" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="2.667" in="SourceAlpha"/>
+      <feComposite/>
+      <feComposite/>
+      <feComposite result="outerGlowBlur"/>
+      <feFlood flood-opacity="0.03"/>
+      <feComposite operator="in" in2="outerGlowBlur"/>
+      <feBlend in2="SourceGraphic" result="outerGlow"/>
+      <feComposite in="SourceGraphic" result="shadowed"/>
+    </filter>
+  </defs>
+  <g>
+    <circle cx="84.5" cy="84.5" r="76.5" class="cls-1"/>
+    <path d="M68.188,110.624 L107.566,82.665 L68.188,54.706 L68.188,110.624 Z" class="cls-2"/>
+  </g>
+</svg>

@@ -29,6 +29,21 @@
   background-size: auto 25%;
   background-position: center center;
   background-image: inline('assets/play-btn.svg');
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  &.youtube-video__play-btn--hover {
+    background-image: inline('assets/play-btn-hover.svg');
+    opacity: 0;
+  }
+}
+
+.youtube-video:hover {
+  .youtube-video__play-btn {
+    opacity: 0;
+    &.youtube-video__play-btn--hover {
+      opacity: 1;
+    }
+  }
 }
 
 .youtube-video__frame {
