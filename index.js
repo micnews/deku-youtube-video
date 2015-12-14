@@ -33,6 +33,10 @@ export default {
           <div class='youtube-video__play-btn'></div>
         </div>;
 
-    return <div class='youtube-video' onClick={videoClick}>{content}</div>;
+    const className = state.videoOpened
+      ? 'youtube-video youtube-video--opened'
+      : 'youtube-video';
+
+    return <div class={className} onClick={videoClick}>{content}</div>;
   }
 };
