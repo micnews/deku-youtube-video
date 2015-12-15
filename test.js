@@ -16,10 +16,10 @@ test('YoutubeVideo initial state', function (t) {
 
   t.equal(html, tsml`
     <div class="youtube-video">
-      <a href="#">
+      <div>
         <div class="youtube-video__image" style="background-image: url(http://img.youtube.com/vi/YoB8t0B4jx4/hqdefault.jpg);"></div>
         <div class="youtube-video__play-btn"></div>
-      </a>
+      </div>
     </div>`);
   t.end();
 });
