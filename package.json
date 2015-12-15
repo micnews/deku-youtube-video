@@ -1,6 +1,6 @@
 {
   "name": "deku-youtube-video",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "browser": "dist/index.js",
   "style": "dist/index.css",
