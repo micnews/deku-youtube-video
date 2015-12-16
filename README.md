@@ -13,7 +13,17 @@ import YoutubeVideo from 'youtube-video';
 
 export default {
   render: function () {
-    return (<YoutubeVideo youtube-id='YoB8t0B4jx4' />);
+    const onLoad = () => {
+      console.log('video loaded');
+      console.log('so now the youtube iframe gets loaded');
+    }
+
+    const onClose = () => {
+      console.log('video unloaded');
+      console.log('so now the youtube iframe isn\' loaded anymore.');
+    }
+
+    return (<YoutubeVideo youtube-id='YoB8t0B4jx4' onLoad={onLoad} onClose={onClose} />);
   }
 }
 ```

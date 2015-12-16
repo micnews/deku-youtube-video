@@ -5,26 +5,35 @@ import element from 'magic-virtual-element';
 
 function videoClick (e, component, setState) {
   setState({
-    videoOpened: true
+    opened: true
   });
 }
 
 export default {
   initialState: function (props) {
     return {
-      videoOpened: false
+      opened: false
     };
+  },
+  beforeUpdate: function ({ props, state }, { onOpen, onClose }, nextState) {
+    if (onOpen && !state.opened && nextState.opened) {
+      onOpen();
+    }
+
+    if (onClose && state.opened && !nextState.opened) {
+      onClose();
+    }
   },
   render: function ({ props, state }, setState) {
     const imageSrc = `http://img.youtube.com/vi/${props['youtube-id']}/${props.thumbnail || 'hqdefault'}.jpg`;
 
     if (setState && props.disabled) {
       setState({
-        videoOpened: false
+        opened: false
       });
     }
 
-    const content = (state.videoOpened && !props.disabled)
+    const content = (state.opened && !props.disabled)
       ? <iframe class='youtube-video__frame' src={`http://www.youtube.com/embed/${props['youtube-id']}?autoplay=1`}
           frameBorder='0' />
       : <div>
@@ -33,7 +42,7 @@ export default {
           <div class='youtube-video__play-btn'></div>
         </div>;
 
-    const className = state.videoOpened
+    const className = state.opened
       ? 'youtube-video youtube-video--opened'
       : 'youtube-video';
 
