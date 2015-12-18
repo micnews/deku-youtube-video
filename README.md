@@ -23,7 +23,10 @@ export default {
       console.log('so now the youtube iframe isn\' loaded anymore.');
     }
 
-    return (<YoutubeVideo youtube-id='YoB8t0B4jx4' onLoad={onLoad} onClose={onClose} />);
+    // opened means that the youtube player is opened & the video is playing
+    const opened = true;
+
+    return (<YoutubeVideo youtube-id='YoB8t0B4jx4' onLoad={onLoad} onClose={onClose} opened={opened} />);
   }
 }
 ```

@@ -41,3 +41,18 @@ test('YoutubeVideo video opened state', function (t) {
     </div>`);
   t.end();
 });
+
+test('YoutubeVideo video opened props', function (t) {
+  var html = renderString(tree(YoutubeVideo.render({
+    props: {
+      'youtube-id': 'YoB8t0B4jx4',
+      opened: true
+    }
+  })));
+
+  t.equal(html, tsml`
+    <div class="youtube-video youtube-video--opened">
+      <iframe class="youtube-video__frame" src="http://www.youtube.com/embed/YoB8t0B4jx4?autoplay=1" frameBorder="0"></iframe>
+    </div>`);
+  t.end();
+});

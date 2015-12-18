@@ -31,6 +31,10 @@ export default {
       setState({
         opened: false
       });
+    } else if (typeof props.opened === 'boolean' && state.opened !== props.opened) {
+      setState({
+        opened: props.opened
+      });
     }
 
     const content = (state.opened && !props.disabled)
