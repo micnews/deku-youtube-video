@@ -10,7 +10,7 @@
     "lint": "semistandard | snazzy",
     "build:css": "postcss --local-plugins -u postcss-assets  index.css > dist/index.css",
     "build:js": "babel index.js --out-dir dist",
-    "build": "npm-run-all --parallel build:css build:js",
+    "build": "mkdir -p dist && npm-run-all --parallel build:css build:js",
     "prepublish": "npm run build"
   },
   "author": "mic.com",
