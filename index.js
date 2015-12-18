@@ -15,13 +15,13 @@ export default {
       opened: false
     };
   },
-  beforeUpdate: function ({ props, state }, { onOpen, onClose }, nextState) {
+  beforeUpdate: function ({ props, state }, { onOpen, onUnload }, nextState) {
     if (onOpen && !state.opened && nextState.opened) {
       onOpen();
     }
 
-    if (onClose && state.opened && !nextState.opened) {
-      onClose();
+    if (onUnload && state.opened && !nextState.opened) {
+      onUnload();
     }
   },
   render: function ({ props, state }, setState) {
