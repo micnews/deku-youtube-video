@@ -3,41 +3,11 @@
 
 import element from 'magic-virtual-element';
 
-function videoClick (e, component, setState) {
-  setState({
-    opened: true
-  });
-}
-
 export default {
-  initialState: function (props) {
-    return {
-      opened: false
-    };
-  },
-  beforeUpdate: function ({ props, state }, { onOpen, onUnload }, nextState) {
-    if (onOpen && !state.opened && nextState.opened) {
-      onOpen();
-    }
-
-    if (onUnload && state.opened && !nextState.opened) {
-      onUnload();
-    }
-  },
-  render: function ({ props, state }, setState) {
+  render: function ({ props }) {
     const imageSrc = `http://img.youtube.com/vi/${props['youtube-id']}/${props.thumbnail || 'hqdefault'}.jpg`;
 
-    if (setState && props.disabled) {
-      setState({
-        opened: false
-      });
-    } else if (typeof props.opened === 'boolean' && state.opened !== props.opened) {
-      setState({
-        opened: props.opened
-      });
-    }
-
-    const content = (state.opened && !props.disabled)
+    const content = (props.opened)
       ? <iframe class='youtube-video__frame' src={`http://www.youtube.com/embed/${props['youtube-id']}?autoplay=1`}
           frameBorder='0' />
       : <div>
@@ -46,10 +16,10 @@ export default {
           <div class='youtube-video__play-btn'></div>
         </div>;
 
-    const className = state.opened
+    const className = props.opened
       ? 'youtube-video youtube-video--opened'
       : 'youtube-video';
 
-    return <div class={className} onClick={videoClick}>{content}</div>;
+    return <div class={className} onClick={props.onClick}>{content}</div>;
   }
 };
