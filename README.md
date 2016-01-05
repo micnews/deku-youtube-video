@@ -11,22 +11,17 @@ npm install deku-youtube-video
 ```js
 import YoutubeVideo from 'youtube-video';
 
+const onClick = (e, component, setState) => {
+  console.log('video clicked');
+  // Set state.opened to true to play the video
+  setState({ opened: true });
+}
+
 export default {
-  render: function () {
-    const onLoad = () => {
-      console.log('video loaded');
-      console.log('so now the youtube iframe gets loaded');
-    }
+  render: function ({ state }) {
+    const {opened} = state;
 
-    const onUnload = () => {
-      console.log('video unloaded');
-      console.log('so now the youtube iframe isn\' loaded anymore.');
-    }
-
-    // opened means that the youtube player is opened & the video is playing
-    const opened = true;
-
-    return (<YoutubeVideo youtube-id='YoB8t0B4jx4' onLoad={onLoad} onUnload={onUnload} opened={opened} />);
+    return (<YoutubeVideo youtube-id='YoB8t0B4jx4' onClick={onClick} opened={opened} />);
   }
 }
 ```
@@ -35,6 +30,16 @@ export default {
 
 #### `id=[youtube-video-id]`
 Set youtube video ID to use.
+
+#### `onClick=[function]`
+Function to run when video is clicked on
+
+#### `opened=[boolean]`
+If false, shows a video preview using the youtube thumbnail and if true opens and plays the video.
+
+#### `thumbnail=[string]` - Optional
+Set which youtube thumbnail to use, defaults to `hqdefault`
+
 
 ## index.css
 
