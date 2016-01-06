@@ -5,12 +5,11 @@ import element from 'magic-virtual-element';
 
 export default {
   render: function ({ props }) {
-    console.log('props', props['thumbnail-size']);
     const imageSrc = props.thumbnail ? props.thumbnail
-      : `http://img.youtube.com/vi/${props['youtube-id']}/${props['thumbnail-size'] || 'hqdefault'}.jpg`;
+      : `http://img.youtube.com/vi/${props['youtubeId']}/${props.thumbnailSize || 'hqdefault'}.jpg`;
 
     const content = (props.opened)
-      ? <iframe class='youtube-video__frame' src={`http://www.youtube.com/embed/${props['youtube-id']}?autoplay=1`}
+      ? <iframe class='youtube-video__frame' src={`http://www.youtube.com/embed/${props['youtubeId']}?autoplay=1`}
           frameBorder='0' />
       : <div>
           <div class='youtube-video__image' style={`background-image: url(${imageSrc});`}></div>

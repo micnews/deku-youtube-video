@@ -28,7 +28,7 @@ export default {
 
 ### Attributes
 
-#### `id=[youtube-video-id]`
+#### `youtubeId=[youtube-video-id]`
 Set youtube video ID to use.
 
 #### `onClick=[function]`
@@ -40,7 +40,7 @@ If false, shows a video preview using the youtube thumbnail and if true opens an
 ### `thumbnail=[string]` - Optional
 Set custom thumbnail image, this will override the standard youtube thumbnail.
 
-#### `thumbnail-size=[string]` - Optional
+#### `thumbnailSize=[string]` - Optional
 Set which youtube thumbnail to use, defaults to `hqdefault`
 
 

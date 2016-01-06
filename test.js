@@ -7,7 +7,7 @@ import tsml from 'tsml';
 test('YoutubeVideo initial state', function (t) {
   var html = renderString(tree(YoutubeVideo.render({
     props: {
-      'youtube-id': 'YoB8t0B4jx4',
+      youtubeId: 'YoB8t0B4jx4',
       opened: false
     }
   })));
@@ -26,9 +26,9 @@ test('YoutubeVideo initial state', function (t) {
 test('YoutubeVideo thumbnail-size', function (t) {
   var html = renderString(tree(YoutubeVideo.render({
     props: {
-      'youtube-id': 'YoB8t0B4jx4',
+      youtubeId: 'YoB8t0B4jx4',
       opened: false,
-      'thumbnail-size': 'maxresdefault'
+      thumbnailSize: 'maxresdefault'
     }
   })));
 
@@ -46,7 +46,7 @@ test('YoutubeVideo thumbnail-size', function (t) {
 test('YoutubeVideo thumbnail', function (t) {
   var html = renderString(tree(YoutubeVideo.render({
     props: {
-      'youtube-id': 'YoB8t0B4jx4',
+      youtubeId: 'YoB8t0B4jx4',
       opened: false,
       'thumbnail': 'http://custom-image.jpg'
     }
@@ -66,7 +66,7 @@ test('YoutubeVideo thumbnail', function (t) {
 test('YoutubeVideo video opened state', function (t) {
   var html = renderString(tree(YoutubeVideo.render({
     props: {
-      'youtube-id': 'YoB8t0B4jx4',
+      youtubeId: 'YoB8t0B4jx4',
       opened: true
     }
   })));
