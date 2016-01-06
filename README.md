@@ -37,7 +37,10 @@ Function to run when video is clicked on
 #### `opened=[boolean]`
 If false, shows a video preview using the youtube thumbnail and if true opens and plays the video.
 
-#### `thumbnail=[string]` - Optional
+### `thumbnail=[string]` - Optional
+Set custom thumbnail image, this will override the standard youtube thumbnail.
+
+#### `thumbnail-size=[string]` - Optional
 Set which youtube thumbnail to use, defaults to `hqdefault`
 
 

@@ -5,7 +5,9 @@ import element from 'magic-virtual-element';
 
 export default {
   render: function ({ props }) {
-    const imageSrc = `http://img.youtube.com/vi/${props['youtube-id']}/${props.thumbnail || 'hqdefault'}.jpg`;
+    console.log('props', props['thumbnail-size']);
+    const imageSrc = props.thumbnail ? props.thumbnail
+      : `http://img.youtube.com/vi/${props['youtube-id']}/${props['thumbnail-size'] || 'hqdefault'}.jpg`;
 
     const content = (props.opened)
       ? <iframe class='youtube-video__frame' src={`http://www.youtube.com/embed/${props['youtube-id']}?autoplay=1`}

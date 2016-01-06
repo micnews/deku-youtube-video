@@ -23,6 +23,46 @@ test('YoutubeVideo initial state', function (t) {
   t.end();
 });
 
+test('YoutubeVideo thumbnail-size', function (t) {
+  var html = renderString(tree(YoutubeVideo.render({
+    props: {
+      'youtube-id': 'YoB8t0B4jx4',
+      opened: false,
+      'thumbnail-size': 'maxresdefault'
+    }
+  })));
+
+  t.equal(html, tsml`
+    <div class="youtube-video">
+      <div>
+        <div class="youtube-video__image" style="background-image: url(http://img.youtube.com/vi/YoB8t0B4jx4/maxresdefault.jpg);"></div>
+        <div class="youtube-video__play-btn youtube-video__play-btn--hover"></div>
+        <div class="youtube-video__play-btn"></div>
+      </div>
+    </div>`);
+  t.end();
+});
+
+test('YoutubeVideo thumbnail', function (t) {
+  var html = renderString(tree(YoutubeVideo.render({
+    props: {
+      'youtube-id': 'YoB8t0B4jx4',
+      opened: false,
+      'thumbnail': 'http://custom-image.jpg'
+    }
+  })));
+
+  t.equal(html, tsml`
+    <div class="youtube-video">
+      <div>
+        <div class="youtube-video__image" style="background-image: url(http://custom-image.jpg);"></div>
+        <div class="youtube-video__play-btn youtube-video__play-btn--hover"></div>
+        <div class="youtube-video__play-btn"></div>
+      </div>
+    </div>`);
+  t.end();
+});
+
 test('YoutubeVideo video opened state', function (t) {
   var html = renderString(tree(YoutubeVideo.render({
     props: {
