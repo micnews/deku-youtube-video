@@ -28,7 +28,7 @@ export default {
 
 ### Attributes
 
-#### `id=[youtube-video-id]`
+#### `youtubeId=[youtube-video-id]`
 Set youtube video ID to use.
 
 #### `onClick=[function]`
@@ -37,7 +37,10 @@ Function to run when video is clicked on
 #### `opened=[boolean]`
 If false, shows a video preview using the youtube thumbnail and if true opens and plays the video.
 
-#### `thumbnail=[string]` - Optional
+### `thumbnail=[string]` - Optional
+Set custom thumbnail image, this will override the standard youtube thumbnail.
+
+#### `thumbnailSize=[string]` - Optional
 Set which youtube thumbnail to use, defaults to `hqdefault`
 
 
