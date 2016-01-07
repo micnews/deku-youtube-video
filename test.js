@@ -48,7 +48,7 @@ test('YoutubeVideo thumbnail', function (t) {
     props: {
       youtubeId: 'YoB8t0B4jx4',
       opened: false,
-      'thumbnail': 'http://custom-image.jpg'
+      thumbnail: 'http://custom-image.jpg'
     }
   })));
 
