@@ -28,21 +28,21 @@ export default {
 
 ### Attributes
 
-#### `youtubeId=[youtube-video-id]`
-Set youtube video ID to use.
+* `youtubeId=[youtube-video-id]` Set youtube video ID to use.
+* `onClick=[function]` Function to run when video is clicked on
+* `opened=[boolean]` If false, shows a video preview using the youtube thumbnail and if true opens and plays the video.
+* `thumbnail=[string]` - _Optional_ Set custom thumbnail image, this will override the standard youtube thumbnail.
+* `thumbnailSize=[string]` - _Optional_ Set which youtube thumbnail to use, defaults to `hqdefault`
 
-#### `onClick=[function]`
-Function to run when video is clicked on
+#### events
 
-#### `opened=[boolean]`
-If false, shows a video preview using the youtube thumbnail and if true opens and plays the video.
+If you load the youtube iframe api (`https://www.youtube.com/iframe_api`), support for the following events exists (as attributes):
 
-### `thumbnail=[string]` - Optional
-Set custom thumbnail image, this will override the standard youtube thumbnail.
-
-#### `thumbnailSize=[string]` - Optional
-Set which youtube thumbnail to use, defaults to `hqdefault`
-
+* `onEnded` - called on _window.YT.PlayState.ENDED_
+* `onPlaying` - called on _window.YT.PlayState.PLAYING_
+* `onPaused` - called on _window.YT.PlayState.PAUSED_
+* `onBuffering` - called on _window.YT.PlayerState.BUFFERING_
+* `onCued` - called on _window.YT.PlayerState.CUED_
 
 ## index.css
 
