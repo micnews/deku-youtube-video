@@ -22,8 +22,12 @@ export default {
         />
       : <div>
           <div class='youtube-video__image' style={`background-image: url(${imageSrc});`}></div>
-          <div class='youtube-video__play-btn youtube-video__play-btn--hover'></div>
-          <div class='youtube-video__play-btn'></div>
+          <div class='youtube-video__play-btn youtube-video__play-btn--hover'>
+            <div class='youtube-video__play-btn__image'></div>
+          </div>
+          <div class='youtube-video__play-btn'>
+            <div class='youtube-video__play-btn__image'></div>
+          </div>
         </div>;
 
     const className = props.opened

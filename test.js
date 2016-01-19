@@ -16,8 +16,12 @@ test('YoutubeVideo initial state', function (t) {
     <div class="youtube-video">
       <div>
         <div class="youtube-video__image" style="background-image: url(http://img.youtube.com/vi/YoB8t0B4jx4/hqdefault.jpg);"></div>
-        <div class="youtube-video__play-btn youtube-video__play-btn--hover"></div>
-        <div class="youtube-video__play-btn"></div>
+        <div class="youtube-video__play-btn youtube-video__play-btn--hover">
+          <div class="youtube-video__play-btn__image"></div>
+        </div>
+        <div class="youtube-video__play-btn">
+          <div class="youtube-video__play-btn__image"></div>
+        </div>
       </div>
     </div>`);
   t.end();
@@ -36,8 +40,12 @@ test('YoutubeVideo thumbnail-size', function (t) {
     <div class="youtube-video">
       <div>
         <div class="youtube-video__image" style="background-image: url(http://img.youtube.com/vi/YoB8t0B4jx4/maxresdefault.jpg);"></div>
-        <div class="youtube-video__play-btn youtube-video__play-btn--hover"></div>
-        <div class="youtube-video__play-btn"></div>
+        <div class="youtube-video__play-btn youtube-video__play-btn--hover">
+          <div class="youtube-video__play-btn__image"></div>
+        </div>
+        <div class="youtube-video__play-btn">
+          <div class="youtube-video__play-btn__image"></div>
+        </div>
       </div>
     </div>`);
   t.end();
@@ -56,8 +64,12 @@ test('YoutubeVideo thumbnail', function (t) {
     <div class="youtube-video">
       <div>
         <div class="youtube-video__image" style="background-image: url(http://custom-image.jpg);"></div>
-        <div class="youtube-video__play-btn youtube-video__play-btn--hover"></div>
-        <div class="youtube-video__play-btn"></div>
+        <div class="youtube-video__play-btn youtube-video__play-btn--hover">
+          <div class="youtube-video__play-btn__image"></div>
+        </div>
+        <div class="youtube-video__play-btn">
+          <div class="youtube-video__play-btn__image"></div>
+        </div>
       </div>
     </div>`);
   t.end();
