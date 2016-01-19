@@ -25,15 +25,28 @@
   height: 100%;
   top: 0;
   left: 0;
-  background-repeat: no-repeat;
-  background-size: auto 25%;
-  background-position: center center;
-  background-image: inline('assets/play-btn.svg');
   opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: opacity 0.3s ease-in-out;
+
+  .youtube-video__play-btn__image {
+    width: 25%;
+    max-width: 135px;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    background-image: inline('assets/play-btn.svg');
+  }
+
   &.youtube-video__play-btn--hover {
-    background-image: inline('assets/play-btn-hover.svg');
     opacity: 0;
+
+    .youtube-video__play-btn__image {
+      background-image: inline('assets/play-btn-hover.svg');
+    }
   }
 }
 
