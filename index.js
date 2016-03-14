@@ -9,9 +9,9 @@ const eventListeners = {};
 export default {
   render: function ({ props, id }) {
     const imageSrc = props.thumbnail ? props.thumbnail
-      : `http://img.youtube.com/vi/${props['youtubeId']}/${props.thumbnailSize || 'hqdefault'}.jpg`;
+      : `//img.youtube.com/vi/${props['youtubeId']}/${props.thumbnailSize || 'hqdefault'}.jpg`;
 
-    const src = `http://www.youtube.com/embed/${props['youtubeId']}?autoplay=1&enablejsapi=1`;
+    const src = `//www.youtube.com/embed/${props['youtubeId']}?autoplay=1&enablejsapi=1`;
 
     const content = (props.opened)
       ? <iframe
