@@ -9,7 +9,7 @@ npm install deku-youtube-video
 ```
 
 ```js
-import YoutubeVideo from 'youtube-video';
+import YoutubeVideo from 'deku-youtube-video';
 
 const onClick = (e, component, setState) => {
   console.log('video clicked');
