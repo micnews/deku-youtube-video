@@ -2,6 +2,7 @@
 import test from 'tape';
 import YoutubeVideo from './';
 import { renderString, tree } from 'deku';
+import element from 'magic-virtual-element';
 import tsml from 'tsml';
 
 test('YoutubeVideo initial state', function (t) {
@@ -72,6 +73,15 @@ test('YoutubeVideo thumbnail', function (t) {
         </div>
       </div>
     </div>`);
+  t.end();
+});
+
+test('YoutubeVideo custom thumbnail', function (t) {
+  const customThumbnail = <div>OK</div>;
+  var html = renderString(tree(<YoutubeVideo customThumbnail={customThumbnail} youtubeId='YoB8t0B4jx4' />));
+
+  t.equal(html, tsml`
+    <div class="youtube-video"><div>OK</div></div>`);
   t.end();
 });
 
