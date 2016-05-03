@@ -7,13 +7,13 @@ const players = {};
 const eventListeners = {};
 
 export default {
-  render: function ({ props, children, id }) {
+  render: function ({ props, id }) {
     const imageSrc = props.thumbnail ? props.thumbnail
       : `//img.youtube.com/vi/${props['youtubeId']}/${props.thumbnailSize || 'hqdefault'}.jpg`;
 
     const src = `//www.youtube.com/embed/${props['youtubeId']}?autoplay=1&enablejsapi=1`;
 
-    const thumbnail = (props.children && props.children.length > 0) ? props.children : (<div>
+    const thumbnail = props.customThumbnail || (<div>
       <div class='youtube-video__image' style={`background-image: url(${imageSrc});`}></div>
       <div class='youtube-video__play-btn youtube-video__play-btn--hover'>
         <div class='youtube-video__play-btn__image'></div>

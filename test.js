@@ -77,10 +77,11 @@ test('YoutubeVideo thumbnail', function (t) {
 });
 
 test('YoutubeVideo custom thumbnail', function (t) {
-  var html = renderString(tree(<YoutubeVideo youtubeId='YoB8t0B4jx4'>OK</YoutubeVideo>));
+  const customThumbnail = <div>OK</div>;
+  var html = renderString(tree(<YoutubeVideo customThumbnail={customThumbnail} youtubeId='YoB8t0B4jx4' />));
 
   t.equal(html, tsml`
-    <div class="youtube-video">OK</div>`);
+    <div class="youtube-video"><div>OK</div></div>`);
   t.end();
 });
 
