@@ -100,3 +100,49 @@ test('YoutubeVideo video opened state', function (t) {
     </div>`);
   t.end();
 });
+
+test('YoutubeVideo API', t => {
+  t.plan(6);
+
+  const props = {
+    youtubeId: 'YoB8t0B4jx4',
+    opened: true,
+    onPlaying: () => t.pass('playing'),
+    onBuffering: () => t.pass('buffering'),
+    onPaused: () => t.pass('paused'),
+    onCued: () => t.pass('cued'),
+    onEnded: () => t.pass('ended')
+  };
+
+  const id = 'player1';
+
+  renderString(tree(YoutubeVideo.render({ props, id })));
+  YoutubeVideo.afterMount({ props, id });
+  YoutubeVideo.afterUpdate({ props, id });
+  YoutubeVideo.afterUpdate({ props, id });
+
+  class Player {
+    constructor (id, opts) {
+      t.pass('init');
+      opts.events.onStateChange({data: 'PLAYING'});
+      opts.events.onStateChange({data: 'BUFFERING'});
+      opts.events.onStateChange({data: 'PAUSED'});
+      opts.events.onStateChange({data: 'CUED'});
+      opts.events.onStateChange({data: 'ENDED'});
+    }
+  }
+
+  // Simulate Youtube API
+  global.YT = {
+    Player: Player,
+    PlayerState: {
+      ENDED: 'ENDED',
+      PLAYING: 'PLAYING',
+      PAUSED: 'PAUSED',
+      BUFFERING: 'BUFFERING',
+      CUED: 'CUED'
+    }
+  };
+
+  global.onYouTubeIframeAPIReady();
+});

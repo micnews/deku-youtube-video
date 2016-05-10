@@ -1,10 +1,66 @@
-'use strict';
-/** @jsx element */
-
 import element from 'magic-virtual-element';
 
 const players = {};
 const eventListeners = {};
+const cbCache = {};
+let prevHandler = null;
+
+function apiReadyHandler () {
+  Object.keys(cbCache).forEach(key => cbCache[key]());
+  if (prevHandler) {
+    prevHandler();
+  }
+}
+
+// Store existing api ready handler
+if (typeof global.onYouTubeIframeAPIReady === 'function') {
+  prevHandler = global.onYouTubeIframeAPIReady;
+}
+
+// Setup new api ready handler
+global.onYouTubeIframeAPIReady = apiReadyHandler;
+
+function onApiReady (id, cb) {
+  if (!global.YT || !global.YT.Player) {
+    cbCache[id] = cb;
+    return;
+  }
+
+  setTimeout(cb, 0);
+}
+
+function afterMountUpdate ({ props, id }) {
+  onApiReady(id, () => {
+    if (props.opened) {
+      eventListeners[id] = {
+        [global.YT.PlayerState.ENDED]: props.onEnded,
+        [global.YT.PlayerState.PLAYING]: props.onPlaying,
+        [global.YT.PlayerState.PAUSED]: props.onPaused,
+        [global.YT.PlayerState.BUFFERING]: props.onBuffering,
+        [global.YT.PlayerState.CUED]: props.onCued
+      };
+    }
+
+    if (props.opened && !players[id]) {
+      players[id] = new global.YT.Player(elementId(id), {
+        videoId: props.youtubeId,
+        events: {
+          onStateChange: function ({data}) {
+            if (eventListeners[id] && eventListeners[id][data]) {
+              eventListeners[id][data]();
+            }
+          }
+        }
+      });
+    }
+
+    if (!props.opened && players[id]) {
+      players[id].destroy();
+      delete players[id];
+      delete eventListeners[id];
+    }
+  });
+}
 
 export default {
   render: function ({ props, id }) {
@@ -38,39 +94,8 @@ export default {
 
     return <div class={className} onClick={props.onClick}>{content}</div>;
   },
-
-  afterUpdate: function ({ props, id }, prevProps) {
-    if (!window.YT || !window.YT.Player) {
-      return;
-    }
-
-    if (props.opened) {
-      eventListeners[id] = {
-        [window.YT.PlayerState.ENDED]: props.onEnded,
-        [window.YT.PlayerState.PLAYING]: props.onPlaying,
-        [window.YT.PlayerState.PAUSED]: props.onPaused,
-        [window.YT.PlayerState.BUFFERING]: props.onBuffering,
-        [window.YT.PlayerState.CUED]: props.onCued
-      };
-    }
-
-    if (!props.opened && prevProps.opened) {
-      players[id].destroy();
-      delete players[id];
-      delete eventListeners[id];
-    } else if (props.opened && !prevProps.opened) {
-      players[id] = new window.YT.Player(elementId(id), {
-        videoId: props.youtubeId,
-        events: {
-          onStateChange: function ({data}) {
-            if (eventListeners[id] && eventListeners[id][data]) {
-              eventListeners[id][data]();
-            }
-          }
-        }
-      });
-    }
-  }
+  afterUpdate: afterMountUpdate,
+  afterMount: afterMountUpdate
 };
 
 function elementId (id) {
