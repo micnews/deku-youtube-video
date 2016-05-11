@@ -96,7 +96,7 @@ test('YoutubeVideo video opened state', function (t) {
 
   t.equal(html, tsml`
     <div class="youtube-video youtube-video--opened">
-      <iframe class="youtube-video__frame" src="//www.youtube.com/embed/YoB8t0B4jx4?autoplay=1&enablejsapi=1" frameBorder="0" id="youtube-video__frame--video-id-foo"></iframe>
+      <iframe class="youtube-video__frame" src="//www.youtube.com/embed/YoB8t0B4jx4?autoplay=1&enablejsapi=1" allowfullscreen="true" frameBorder="0" id="youtube-video__frame--video-id-foo"></iframe>
     </div>`);
   t.end();
 });

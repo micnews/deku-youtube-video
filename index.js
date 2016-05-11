@@ -83,6 +83,9 @@ export default {
       ? <iframe
         class='youtube-video__frame'
         src={src}
+        /* eslint-disable */
+        allowfullscreen
+        /* eslint-enable */
         frameBorder='0'
         id={elementId(id)}
         />
