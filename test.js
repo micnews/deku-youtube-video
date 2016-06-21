@@ -101,6 +101,24 @@ test('YoutubeVideo video opened state', function (t) {
   t.end();
 });
 
+test('YoutubeVideo player disable info and related videos', function (t) {
+  var html = renderString(tree(YoutubeVideo.render({
+    props: {
+      youtubeId: 'YoB8t0B4jx4',
+      opened: true,
+      disableInfo: true,
+      disableRelatedVideos: true
+    },
+    id: 'foo'
+  })));
+
+  t.equal(html, tsml`
+    <div class="youtube-video youtube-video--opened">
+      <iframe class="youtube-video__frame" src="//www.youtube.com/embed/YoB8t0B4jx4?autoplay=1&enablejsapi=1&showinfo=0&rel=0" allowfullscreen="true" frameBorder="0" id="youtube-video__frame--video-id-foo"></iframe>
+    </div>`);
+  t.end();
+});
+
 test('YoutubeVideo API', t => {
   t.plan(6);
 

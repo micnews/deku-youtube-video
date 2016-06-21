@@ -1,4 +1,5 @@
 import element from 'magic-virtual-element';
+import querystring from 'querystring';
 
 const players = {};
 const eventListeners = {};
@@ -67,7 +68,20 @@ export default {
     const imageSrc = props.thumbnail ? props.thumbnail
       : `//img.youtube.com/vi/${props['youtubeId']}/${props.thumbnailSize || 'hqdefault'}.jpg`;
 
-    const src = `//www.youtube.com/embed/${props['youtubeId']}?autoplay=1&enablejsapi=1`;
+    const query = {
+      autoplay: 1,
+      enablejsapi: 1
+    };
+
+    if (props.disableInfo) {
+      query.showinfo = 0;
+    }
+
+    if (props.disableRelatedVideos) {
+      query.rel = 0;
+    }
+
+    const src = `//www.youtube.com/embed/${props['youtubeId']}?${querystring.stringify(query)}`;
 
     const thumbnail = props.customThumbnail || (<div>
       <div class='youtube-video__image' style={`background-image: url(${imageSrc});`}></div>
