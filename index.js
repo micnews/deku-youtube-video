@@ -81,6 +81,10 @@ export default {
       query.rel = 0;
     }
 
+    if (props.disableAutoplay) {
+      query.autoplay = 0;
+    }
+
     const src = `//www.youtube.com/embed/${props['youtubeId']}?${querystring.stringify(query)}`;
 
     const thumbnail = props.customThumbnail || (<div>
